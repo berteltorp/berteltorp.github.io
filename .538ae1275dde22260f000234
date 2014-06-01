@@ -1,0 +1,21 @@
+---
+time: 1401610927
+inventory:
+  /hello-world/index.html:
+    md5: 8b4684fb58b0fedba4f0e3b8348c4b33
+    time: 1401610926
+  /index.html:
+    md5: 8b4684fb58b0fedba4f0e3b8348c4b33
+    time: 1401610926
+  /CNAME:
+    md5: 447a6bffd9f847b955fa1fe6b8a15234
+    time: 1401610926
+  /sitemap.xml:
+    md5: bc821672daf6f69924c405c221cc9f5f
+    time: 1401610926
+  /feed.xml:
+    md5: 71f87db8d19b66c71d97b4bef7050015
+    time: 1401610926
+  /style.css:
+    md5: 9187a6775bdce8f1f2143accea89ba6c
+    time: 1401610926
