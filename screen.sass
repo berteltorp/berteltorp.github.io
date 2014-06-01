@@ -1,0 +1,612 @@
+@import '_normalize'
+@import '_mixins'
+@import '_twilight'
+
+// variables
+
+$base-font: "jaf-bernina-sans-1","jaf-bernina-sans-2", "Helvetica Neue", Helvetica, sans-serif
+$title-font: "lexia-1", "lexia-2", "Helvetica Neue", Helvetica, sans-serif
+$code-font: "Monaco", monospace, serif
+
+$separator-color: #DDD
+$separator: solid 2px $separator-color
+
+// reset
+
+@media screen and (max-device-width: 480px)
+  html
+    -webkit-text-size-adjust: 100%
+    -ms-text-size-adjust: 100%
+
+*,
+*:before,
+*:after
+  +prefix-property(box-sizing, border-box)
+
+ul
+  padding: 0
+
+li
+  list-style-type: none
+
+// base
+
+body
+  overflow-x: hidden
+
+  font: 400 100%/1.65 $base-font
+  text-rendering: optimizeLegibility
+
+img
+  max-width: 100%
+
+a
+  +transition(color 0.15s $easeInOutQuad)
+  text-decoration: none
+
+  img
+    vertical-align: top
+
+p > code
+  white-space: nowrap
+
+// fonts
+
+.wf-loading .webfont
+  visibility: hidden
+
+// headers
+
+h1, h2
+  text-align: center
+
+h2, h4
+  font-family: $title-font
+  font-weight: 300
+
+h1
+  font-size: 1.5em
+  line-height: 1em
+  font-weight: 600
+
+h2
+  +transition(font-size 0.25s ease)
+  margin: 1em 0
+  font-size: 2em
+  line-height: 1.25em
+  letter-spacing: -1px
+
+h3
+  font-size: 1.25em
+  font-weight: 600
+
+h4
+  font-size: 1.25em
+
+// header
+
+.main-header
+  z-index: 1
+  position: relative
+  overflow: hidden
+  padding: 2rem 0
+  height: 6.25rem
+
+  &:before
+    +transition(all 0.35s $easeOutCubic)
+    +prefix-property(opacity, 0.5)
+    cursor: pointer
+    position: absolute
+    left: 50%
+    bottom: 0
+    margin-left: -0.5em
+
+    font-size: 0.875rem
+
+  &:not(.is-touching)
+    +transition(height 0.35s $easeOutCubic)
+
+  &.is-expanded
+    height: 16.25em
+
+    &:before
+      +rotate(180deg)
+      bottom: 0.25em
+
+  > .wrapper
+    max-width: 46.875rem
+    margin: 0 auto
+
+.main-title
+  +transition(all 0.35s $easeOutCubic)
+  position: relative
+  opacity: 1
+  cursor: pointer
+  margin: 0.25em 0
+
+// nav
+
+.main-nav
+  +transition(left 0.35s $easeOutCubic)
+  margin: 0 auto
+  width: 19em
+
+.main-nav-list
+  +transition(right 0.35s $easeOutCubic)
+  float: left
+  margin: 1.75em 0 0
+
+  > li
+    +transition(opacity 0.35s $easeOutCubic)
+    width: 7.5em
+    margin: 0 1em
+
+    &.is-selected > a
+      font-style: italic
+      text-decoration: line-through
+
+    &.is-disabled
+      +prefix-property(opacity, 0.35)
+      font-style: italic
+
+// content
+
+.main-content
+  +transition(top 0.35s $easeOutCubic)
+  overflow-x: hidden
+  min-height: 50vh
+  top: 10.375rem
+  margin: 1rem 0 2rem
+  padding: 0 1rem
+
+  > .wrapper
+    max-width: 46.875rem
+    margin: 0 auto
+
+// footer
+
+.main-footer
+  padding: 2em 0
+  font-size: 0.75em
+  text-align: center
+
+// pagination
+
+.pagination
+  +transition(opacity 0.25s $easeInOutQuad)
+  position: fixed
+  top: 50%
+  font-size: 2em
+  opacity: 0
+
+  & > .icon
+    position: relative
+    top: -0.5em
+
+  &.next
+    left: 1rem
+
+  &.previous
+    right: 1rem
+
+  +min-width(56em)
+    opacity: 1
+
+// content
+
+.content-header
+  margin-bottom: 1em
+
+.content-title
+  margin-bottom: 0
+
+.content-subheader,
+.listing-footer
+  font-size: 0.9375rem
+  font-weight: normal
+  text-align: center
+
+.nav-icon
+  +transition(opacity 0.25s $easeInOutQuad)
+  position: relative
+  top: 3px
+  opacity: 0
+
+  +max-width(56em)
+    opacity: 1
+
+.content-date
+  margin: 0 0.5em
+
+.content-body
+  p
+    position: relative
+    font-size: 0.9375rem
+    line-height: 1.5em
+
+    &:first-child
+      margin-top: 2rem
+
+      img, .video-outer
+        margin-top: 0
+
+  img, .video-outer
+    margin: 1em 0
+
+  pre
+    margin: 2em 0
+
+  h3
+    margin-top: 2em
+
+  h3 + p > img
+    margin-top: 1em
+
+  h3 + pre
+    margin-top: 2.5em
+
+  a
+    text-decoration: none
+
+  strong > img
+    margin-left: -20%
+    max-width: 140%
+
+  blockquote
+    margin: 2em 1em
+    padding-left: 1em
+    border-left: solid 5px
+    font-style: italic
+
+    p:first-child
+      margin-top: 1em
+
+  .note
+    padding: 1em
+    background-color: #EEE
+    font-size: 0.825em
+
+  .more
+    border-bottom: none
+
+  .left
+    margin-left: auto
+    margin-right: auto
+
+.more
+  &:after
+    +transition(opacity 0.25s $easeInOutQuad)
+    content: ' \2192'
+    opacity: 0
+
+  &:hover:after
+    opacity: 1
+
+// article
+
+.content-footer
+  border-top: $separator
+  padding: 2em 0 0
+  margin: 2em 0 0
+
+  text-align: center
+
+.article-footer
+  margin-top: 2em
+  text-align: center
+
+  p
+    font-style: italic
+
+  p + .tweet-button
+    margin-top: 2em
+
+.article-listing
+  border-bottom: $separator
+  padding-bottom: 2em
+  margin-bottom: 2em
+
+  p
+    display: inline
+
+  h2
+    font-size: 2em
+
+  .tag-list
+    text-align: center
+
+  &:last-child
+    padding-bottom: 0
+    margin-bottom: 0
+    border-bottom: none
+
+.tag-list
+  & > li
+    display: inline
+
+.tweet-button
+  display: block
+
+  .ss-icon
+    font-size: 1.5em
+    vertical-align: bottom
+
+  .count
+    position: relative
+    top: -0.175em
+    margin-left: 0.25em
+
+    font-size: 1.5em
+    font-weight: 600
+
+.featured-section
+  border-top: $separator
+  padding-top: 1em
+  margin-top: 2em
+
+// lists
+
+.list-section
+  h3
+    text-align: center
+
+.list-footer
+  margin: 1.5em 0
+  text-align: center
+
+.vertical-listing
+  width: 100%
+  padding-left: 0.5em
+  margin: 0.5em 0
+
+  font-size: 0.9375rem
+
+.column-section
+  .vertical-list
+    +prefix-property(column-count, 1)
+    +prefix-property(column-gap, 2em)
+
+  .vertical-listing
+    +prefix-property(column-break-inside, avoid)
+    display: inline-block
+
+.grid-list
+  font-size: 0
+  letter-spacing: 0
+  word-spacing: 0
+
+.grid-listing
+  display: inline-block
+  width: 50%
+  font-size: 1rem
+
+  .wrapper
+    +transition(margin 0.25s $easeInOutQuad)
+    position: relative
+    margin: 0.75em
+
+  .overlay
+    +transition(height 0.4s $easeOutCubic)
+    display: none
+    position: absolute
+    overflow: hidden
+    width: 100%
+    height: 0
+    bottom: 0
+    text-align: center
+    line-height: 2em
+
+  &:hover .overlay
+    height: 2em
+
+.shelf-list
+  +clearfix
+
+.shelf-listing
+  position: relative
+  float: left
+  width: 50%
+  margin: 1.875em 0
+  border-bottom: 10px solid $separator-color
+
+  &:hover
+    background-color: black
+
+    .listing-header
+      display: block
+
+.listing-thumbnail
+  display: block
+  text-align: center
+
+  img
+    vertical-align: bottom
+
+.listing-header
+  display: none
+  position: absolute
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  padding: 0.625em
+
+.listing-title
+  font-size: 1rem
+  line-height: 1.5em
+  color: white
+
+// code
+
+p > code
+  position: relative
+  top: -1px
+  padding: 0.25em 0.5em
+  font-family: $code-font
+  font-size: 0.75em
+  background-color: #EEE
+  color: #000
+
+// video
+
+.video-inner
+  position: relative
+  padding-bottom: 56.25%
+
+  iframe, video
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+
+// breakpoints
+
++min-width(30.1em)
+  h2
+    font-size: 300%
+
+  .main-header,
+  .main-header.is-expanded
+    height: 10.375rem
+    padding-left: 1rem
+    padding-right: 1rem
+    font-size: 87.5%
+
+    &:before
+      +prefix-property(opacity, 0)
+
+  .main-nav
+    position: relative
+    float: left
+    left: 50%
+    width: auto
+
+  .main-nav-list
+    position: relative
+    right: 50%
+    clear: none
+    float: left
+
+    > li
+      margin: 0
+
+  .main-content
+    margin-top: 2rem
+
+  .list-column
+    +clearfix
+
+    .list-section
+      float: left
+      width: 50%
+
+      &:first-child
+        padding-right: 0.5rem
+
+      &:last-child
+        padding-left: 0.5rem
+
+  .list-section h3
+    text-align: left
+
+  .list-footer
+    text-align: left
+
+  .shelf-listing
+    width: 33.3333%
+
+  .article
+    h2
+      font-size: 300%
+
+    .content-header
+      margin-bottom: 2em
+
+  .article-footer
+    margin-top: 3em
+
+  .article-listing
+    h2
+      font-size: 200%
+
+  .featured-section
+    margin-top: 3em
+
+  .column-section .vertical-list
+    +prefix-property(column-count, 2)
+
+  .vertical-listing
+    font-size: 1rem
+
+  .grid-listing
+    width: 33.3333%
+
+    .wrapper
+      margin: 1em
+
+    .overlay
+      display: block
+
+  .content-header
+    margin-left: 2em
+    margin-right: 2em
+
+  .content-subheader, .listing-footer
+    font-size: 100%
+
+  .content-body
+    p
+      font-size: 1em
+
+      &:first-child
+        margin-top: 3em
+
+    img, .video-outer
+      margin-top: 2em
+      margin-bottom: 2em
+
+    pre
+      margin-top: 4em
+      margin-bottom: 4em
+
+    p > a > img
+      margin-top: 1em
+
+    .note
+      font-size: 0.875em
+
+  .content-footer
+    padding-bottom: 2em
+    margin-bottom: 2em
+
++min-width(40.1em)
+  .shelf-listing
+    width: 25%
+
+  .main-header,
+  .main-header.is-expanded
+    height: 5.875rem
+    padding-top: 1.5rem
+    padding-bottom: 1.5rem
+
+  .main-title
+    float: left
+    margin: 0
+
+  .main-nav
+    float: right
+    left: 0
+
+  .main-nav-list
+    right: 0
+    margin-top: 0
+
+  .content-body
+    .left
+      float: left
+      max-width: 18.75em
+      width: 50%
+      margin-top: 0
+      margin-bottom: 1em
+      margin-right: 2em
