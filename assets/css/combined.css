@@ -118,8 +118,7 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 .\-2u\28mobile\29{margin-left:16.66667%;}
 .\-1u\28mobile\29{margin-left:8.33333%;}
 }
-body{background-color:#2D98BA;font-family:'Source Sans Pro', sans-serif;font-weight:300;color:#777777;}
-@-webkit-keyframes pulse { 0% {background-color: #8AE3FF;} 25% {background-color: #3ED0FF;} 50% {background-color: #45717F;} 75% {background-color: #31A7CC;} 100% {background-color: #D8CAB4;} } body { background-color: #2D98BA; -webkit-animation: pulse 40s infinite alternate; }
+@-webkit-keyframes pulse { 0% {background-color: #B1E1D4;} 50% {background-color: #D06E62;} 100% {background-color: #B7CB70;} } body { background-color:#B1E1D4;font-family:'Source Sans Pro', sans-serif;font-weight:300;color:#777777; -webkit-animation: pulse 40s infinite alternate; }
 input, textarea, select{font-family:'Source Sans Pro', sans-serif;font-weight:300;color:#777777;}
 strong, b, h1, h2, h3, h4, h5, h6{font-weight:400;color:#363636;}
 blockquote{border-left:solid 0.5em #ddd;padding:1em 0 1em 2em;font-style:italic;}
