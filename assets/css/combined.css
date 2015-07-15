@@ -119,6 +119,7 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 .\-1u\28mobile\29{margin-left:8.33333%;}
 }
 body{background-color:#2D98BA;font-family:'Source Sans Pro', sans-serif;font-weight:300;color:#777777;}
+@-webkit-keyframes pulse { 0% {background-color: #8AE3FF;} 25% {background-color: #3ED0FF;} 50% {background-color: #45717F;} 75% {background-color: #31A7CC;} 100% {background-color: #D8CAB4;} } body { background-color: #2D98BA; -webkit-animation: pulse 40s infinite alternate; }
 body.is-loading *, body.is-loading *:before, body.is-loading *:after{-moz-transition:none !important;-webkit-transition:none !important;-ms-transition:none !important;transition:none !important;-moz-animation:none !important;-webkit-animation:none !important;-ms-animation:none !important;animation:none !important;}
 input, textarea, select{font-family:'Source Sans Pro', sans-serif;font-weight:300;color:#777777;}
 strong, b, h1, h2, h3, h4, h5, h6{font-weight:400;color:#363636;}
