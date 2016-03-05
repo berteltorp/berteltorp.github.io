@@ -2,43 +2,60 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-
 		<title>Bertel Bertelsen</title>
-
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Fjord+One" />
-		<link rel="stylesheet" href="css/style.css">
-
-		<!--[if lt IE 9]>
-			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-		<![endif]-->
+		<link rel="stylesheet" href="./css/style.css">
+		<!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 	</head>
 
 	<body class="animated bounceInDown">
 		<div class="avatar">
-			<img src="img/avatar.jpg" alt="Bertel">
+			<img src="./img/avatar.jpg" alt="Bertel">
 		</div>
-
 		<div class="content">
 			<h1 class="title">Bertel<br>Bertelsen</h1>
-
 			<p>
 				Tech &cap; Poltitics &cap; Business<br/>
 				Copenhagen
 			</p>
-
 			<ul class="social-icons">
-				<li><a class="twitter" href="https://twitter.com/berteltorp" title="Twitter">Twitter</a></li>
-				<li><a class="linkedin" href="https://www.linkedin.com/in/berteltorp" title="LinkedIn">LinkedIn</a></li>
-				<li><a class="github" href="https://github.com/berteltorp" title="Github">Github</a></li>
+				<li><a class="twitter" href="https://twitter.com/berteltorp" title="Twitter" rel="author">Twitter</a></li>
+				<li><a class="linkedin" href="https://www.linkedin.com/in/berteltorp" title="LinkedIn" rel="author">LinkedIn</a></li>
+				<li><a class="github" href="https://github.com/berteltorp" title="Github" rel="author">Github</a></li>
 			</ul>
-
 			<p>
 				CTO at<br>
-				<a href="https://mecindo.dk" rel="nofollow">mecindo.dk</a>
+				<a href="https://mecindo.dk" rel="prefetch">mecindo.dk</a>
 			</p>
-
-			<p>Want to send me a love letter? <a href="mailto:bertel@bertel.dk">Email me</a>.</p>
+			<p>Email<br>
+			<a href="mailto:bertel@bertel.dk">bertel@bertel.dk</a></p>
+			<div id="blogposts"></div>
 		</div>
+		<script>
+		var xmlhttp = new XMLHttpRequest();
+		var url = "https://blog.bertel.dk/wp-json/wp/v2/posts";
+		
+		xmlhttp.onreadystatechange = function() {
+		    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+		        var blogPosts = JSON.parse(xmlhttp.responseText);
+		        show(blogPosts);
+		    }
+		};
+		xmlhttp.open("GET", url, true);
+		xmlhttp.send();
+		
+		function show(post) {
+		    var output = "<h2>Last 3 posts on <a href='https://blog.bertel.dk' rel='prefetch'>blog.bertel.dk</a></h2><ul>";
+		    var i;
+		    for(i = 0; i < 3; i++) {
+		        output += '<li><h4><a href="' + post[i].link + '">' + 
+		        post[i].title.rendered + '</a></h4>' + 
+		        post[i].excerpt.rendered;
+		    }
+		    output +="</ul>"
+		    document.getElementById("blogposts").innerHTML = output;
+		}
+		</script>
 	</body>
 </html>
