@@ -1,0 +1,15 @@
+{
+  "background_color": "#0f403d",
+  "description": "Save a barcode with your member id for zoo entry",
+  "display": "fullscreen",
+  "icons": [
+    {
+      "src": "lion-icon.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    }
+  ],
+  "name": "Zookort",
+  "short_name": "Zoo",
+  "start_url": "/index.html"
+}
