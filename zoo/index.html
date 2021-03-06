@@ -29,6 +29,7 @@
     var medlemsnummer = window.localStorage.getItem('medlemsnummer') || 123456;
     const myInput = document.getElementById("myInput")
     myInput.value = medlemsnummer;
+    window.onload = function() {myInput.focus();}
     JsBarcode("#barcode", medlemsnummer,{displayValue: false});
     myInput.addEventListener('keyup', function (event) {
       // Clear any existing debounce event
