@@ -5,17 +5,18 @@
   <title>Zookort</title>
   <meta content="width=device-width,initial-scale=1" name="viewport">
   <link rel="manifest" href="https://bertel.dk/zoo/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="https://bertel.dk/zoo/lion-icon.png">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦁</text></svg>">
   <style>
     html,body{width:100%;min-height:100vh;background-color: forestgreen;display: flex;justify-content: center;align-items: center;}
-    h1{opacity: 0.1;font-family: sans-serif;font-weight: bolder;color:black;text-transform: uppercase;position: fixed;top:10px;}
+    h1{position: fixed;top:10px;font-size:100px;}
     div{background-color: white;border-radius: 3px;min-width: 200px;text-align: center;padding:2px;}
     #myInput{font-size:19px;margin:0 auto;display:block;text-align: center; padding:3px;-webkit-appearance: none;border: 0;outline: 0;padding: 0;}
     #barcode{margin:0 auto;}
   </style>
 </head>
 <body>
-  <h1>Zookort</h1>
+  <h1 id="lion">🦁</h1>
   <div>
     <svg id="barcode"></svg>
     <input id="myInput" type="number" placeholder="Indtast medlemsnummer her.." pattern="[0-9]*" autofocus autocomplete="on">
@@ -26,20 +27,29 @@
   </script>
   <script>
     var debounce;
-    var medlemsnummer = window.localStorage.getItem('medlemsnummer') || 123456;
-    const myInput = document.getElementById("myInput")
-    myInput.value = medlemsnummer;
-    window.onload = function() {myInput.focus();}
-    JsBarcode("#barcode", medlemsnummer,{displayValue: false});
+    var medlemsnummer = window.localStorage.getItem('medlemsnummer') || '';
+    const myInput = document.getElementById("myInput");
+    const lion = document.getElementById("lion");
+
+    window.onload = function() {myInput.value = medlemsnummer; myInput.focus();}
+    if(medlemsnummer.length>0){
+      JsBarcode("#barcode", medlemsnummer,{displayValue: false});
+    }
+
     myInput.addEventListener('keyup', function (event) {
       // Clear any existing debounce event
       clearTimeout(debounce);
 
-      // Update the barcode after 300ms
+      // Only update the barcode every 300ms
       debounce = setTimeout(function () {
-        JsBarcode("#barcode", myInput.value,{displayValue: false});
-        // Store the number on your device so you don't have to retype it
-        window.localStorage.setItem("medlemsnummer", myInput.value);
+          if(myInput.value.length>0){
+            JsBarcode("#barcode", myInput.value,{displayValue: false});
+            // Store the number on your device so you don't have to retype it
+            window.localStorage.setItem("medlemsnummer", myInput.value);
+          }else{
+            JsBarcode("#barcode", 12345,{displayValue: false})
+            localStorage.removeItem('medlemsnummer');
+          }
       }, 300);
     });
   </script>
