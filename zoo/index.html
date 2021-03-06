@@ -1,0 +1,30 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Zookort</title>
+  <meta content="width=device-width,initial-scale=1" name="viewport">
+  <style>#myInput{position: fixed;bottom:30px;font-size:40px}#barcode{width: 98%;}html,body{width:100%;min-height:100vh;background-color: #0f403d;display: flex;justify-content: center;align-items: center;}</style>
+</head>
+<body>
+  <svg id="barcode"></svg>
+  <input id="myInput" type="number" placeholder="Indtast nummer her.." value="4001234">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jsbarcode/3.11.3/barcodes/JsBarcode.code128.min.js" integrity="sha512-CaxsT3MP91XqUigcL3JECZ6WJxiKpAzdxrShFprjjxb4VpESO4YMjIALnQvuFRzjkKpr5rBgQsbVTEiwbnV1oA==" crossorigin="anonymous"></script>
+  <script>
+    var debounce;
+
+    const myInput = document.getElementById("myInput")
+    JsBarcode("#barcode", myInput.value);
+    myInput.addEventListener('keyup', function (event) {
+      // Clear any existing debounce event
+      clearTimeout(debounce);
+
+      // Update and log the counts after 300ms
+      debounce = setTimeout(function () {
+        JsBarcode("#barcode", myInput.value);
+      }, 300);
+    });
+  </script>
+</body>
+</html>
