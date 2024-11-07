@@ -19,7 +19,8 @@ strong,
 u,
 ul {
 	margin: 0;
-	padding: 0
+	padding: 0;
+	cursor: url(https://bertel.dk/img/guldfisk.png) 2 12, auto;
 }
 
 h1,
@@ -52,7 +53,6 @@ html {
 
 body {
 	margin: 10%;
-	cursor: url(https://bertel.dk/img/guldfisk.png) 2 12, auto;
 }
 
 .avatar {
