@@ -52,7 +52,7 @@ html {
 
 body {
 	margin: 10%;
-	cursor: url(https://bertel.dk/img/guldfisk.png) 2 12 auto;
+	cursor: url(https://bertel.dk/img/guldfisk.png) 2 12, auto;
 }
 
 .avatar {
