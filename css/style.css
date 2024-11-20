@@ -20,7 +20,6 @@ u,
 ul {
 	margin: 0;
 	padding: 0;
-	cursor: url(https://bertel.dk/img/guldfisk.png) 2 12, auto;
 }
 
 h1,
@@ -98,6 +97,10 @@ p {
 	filter: alpha(opacity=40);
 	width: 20px;
 	height: 20px
+}
+
+.bluesky {
+	background-image: url(../img/bluesky.svg)
 }
 
 .mastodon {
